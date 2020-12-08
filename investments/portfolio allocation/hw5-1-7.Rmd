@@ -1,0 +1,22 @@
+---
+title: "hw5-1-7"
+author: "Anatolie Chernyakhovsky"
+date: "December 8, 2020"
+output: pdf_document
+---
+
+# Project: Portfolio allocation  
+The Excel file lecture6p.xlsx contains daily market data for VanEck Vectors Short Muni ETF, Handa Mining Corp,  from 12/29/1989 to 8/31/2020, obtained from Yahoo Finance. The file also includes a daily risk-free rate time series from Kenneth French’s
+Data Library. For this problem set, you should calculate time series of weekly returns.  
+
+## Problem 1:
+Construct weekly simple total returns from the price data (use Adj Close to include dividends). Compute and report the weekly and annualized mean and standard deviation for each stock. Compute the correlation matrix.  
+```{r, include=FALSE}
+require("tidyverse")
+
+# Ensure that your .csv is in your working directory:
+# getwd() 
+# setwd() 
+# Goal: import our excel sheet data.
+xl_data = "C:/Users/Anatolie/OneDrive/Documents/R/portfolio allocation"
+```

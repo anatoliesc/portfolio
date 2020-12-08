@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1607423039852.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "29A5812B",
+    "lastKnownWriteTime" : 1607423157,
+    "last_content_update" : 1607425430019,
+    "path" : "C:/R/portfolio allocation/hw5-1-7.Rmd",
+    "project_path" : "hw5-1-7.Rmd",
+    "properties" : {
+        "cursorPosition" : "8,88",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

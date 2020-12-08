@@ -1,0 +1,50 @@
+---
+title: "hw5-1-7"
+author: "Anatolie Chernyakhovsky"
+date: "December 8, 2020"
+output: pdf_document
+---
+
+# Project: Portfolio allocation  
+The Excel file lecture6p.xlsx contains daily market data for VanEck Vectors Short Muni ETF, Handa Mining Corp,  from 12/29/1989 to 8/31/2020, obtained from Yahoo Finance. The file also includes a daily risk-free rate time series from Kenneth French’s
+Data Library. For this problem set, you should calculate time series of weekly returns.  
+
+## Problem 1:
+Construct weekly simple total returns from the price data (use Adj Close to include dividends). Compute and report the weekly and annualized mean and standard deviation for each stock. Compute the correlation matrix.  
+```{r, include=FALSE}
+# IMPORT PACKAGES
+require("tidyverse")
+library("readxl")
+```
+
+
+```{r}
+# Goal: import our excel sheet data.
+xl_tabnames = excel_sheets("lecture6p.xlsx")
+data = lapply(xl_tabnames, read_excel, 
+              path="lecture6p.xlsx")
+MSFT = data.frame(data[1])
+INTC = data.frame(data[2])
+LUV = data.frame(data[3])
+MCD = data.frame(data[4])
+JNJ = data.frame(data[5])
+FFF = data.frame(data[6])
+# Goal: compute weekly simple total returns.
+adj_close = data.frame( 
+  "MSFT" = MSFT[[6]], 
+  "INTC" = INTC[[6]], 
+  "LUV" = LUV[[6]], 
+  "MCD" = MCD[[6]], 
+  "JNJ" = JNJ[[6]])
+adj_close$MSFTret = 0
+adj_close$INTCret = 0
+adj_close$LUVret = 0
+adj_close$MCDret = 0
+adj_close$JNJret = 0
+n = nrow(adj_close)
+
+# TODO: The commented out code below throws issues. Find out why, and then replicate it for all DF cols I initialized above.
+
+#adj_close$MSFTret = ((adj_close[2:n, 1] - #adj_close[1:(n-1), 1])/adj_close[1:(n-1), 1])
+
+```
