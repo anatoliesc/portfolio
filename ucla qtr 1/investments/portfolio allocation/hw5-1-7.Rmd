@@ -143,3 +143,31 @@ scale_color_continuous(name = expression(omega[x]), labels = percent)
 # Code citation: https://www.r-bloggers.com/2016/05/a-gentle-introduction-to-finance-using-r-efficient-frontier-and-capm-part-1/
 ```
 
+## Problem 3:
+Add remaining stocks to the mix. Compute the mean-variance frontier and plot it on the same chart with the one from the previous question. Indicate the minimumvariance portfolio and the efficient frontier. How do they compare to those of the previous question?  
+
+```{r}
+# note: correlation matrix is corr_matrix
+stdevs = c(agg_ret$MSFT_wk_sd_annu, agg_ret$INTC_wk_sd_annu, 
+           agg_ret$LUV_wk_sd_annu, agg_ret$MCD_wk_sd_annu, 
+           agg_ret$JNJ_wk_sd_annu)
+# 'b' is a 5*5 matrix whose generic term is stdev[i]*stdev[j]
+b = stdevs %*% t(stdevs)
+stockCov = b*corr_matrix
+# Code citation: https://stackoverflow.com/questions/18740796/generate-covariance-matrix-from-correlation-matrix
+colnames(stockCov) = c("MSFT","INTC","LUV", 
+                       "MCD", "JNJ")
+msft_intc = stockCov[1,2]
+msft_luv = stockCov[1,3]
+msft_mcd = stockCov[1,4]
+msft_jnj = stockCov[1,5]
+intc_luv = stockCov[2,3]
+intc_mcd = stockCov[2,4]
+intc_jnj = stockCov[2,5]
+luv_mcd = stockCov[3,4]
+luv_jnj = stockCov[3,5]
+mcd_jnj = stockCov[4,5]
+# modifying above approach to fit 5 assets
+five_assets = data.table(wx = rep(x_weights, each = length(x_weights)), wy = rep(x_weights, length(x_weights)))
+five_assets[, wz:= 1 - wx - wy]
+```
